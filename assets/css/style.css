@@ -1,0 +1,124 @@
+/* Global Styles */
+:root {
+    --primary-color: #003262;  /* NeurIPS blue */
+    --secondary-color: #f8f9fa;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: var(--secondary-color);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+/* Section Styling */
+.section {
+    padding: 3rem 0;
+}
+
+.section-title {
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* Cards */
+.organizer-card {
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.organizer-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Important Dates */
+.important-date {
+    padding: 15px;
+    background-color: var(--light-bg);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+}
+
+/* Speaker Cards */
+.speaker-card {
+    transition: transform 0.3s ease;
+}
+
+.speaker-card:hover {
+    transform: translateY(-5px);
+}
+
+.speaker-image {
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Schedule Items */
+.schedule-item {
+    display: flex;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.schedule-time {
+    min-width: 150px;
+    font-weight: bold;
+}
+
+.schedule-keynote {
+    border-left: 4px solid #003262;
+}
+
+.schedule-talk {
+    border-left: 4px solid #FDB515;
+}
+
+.schedule-break {
+    border-left: 4px solid #3B7EA1;
+}
+
+/* Animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
