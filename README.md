@@ -1,5 +1,4 @@
-# er-llm.github.io
-NeurIPS Workshop on Efficient Reasoning with LLMs
+# NeurIPS Workshop on Efficient Reasoning with LLMs
 
 The unprecedented advances in the capabilities of Large Language Models (LLM-s) have been mostly driven by the scaling laws governing the dependence of model performance on its size, training data, and compute. Recent work has demonstrated that LLM-s can substantially improve their reasoning abilities on complex tasks by allocating inference time compute, allowing models to refine their Chain of Thought (CoT) reasoning trajectories and/or generating multiple reasoning paths that can be aggregated into a better response. While inference time scaling holds significant promise for pushing the frontier, it also poses a number of significant challenges that need to be addressed. Namely, generating large number of tokens during the thinking process introduces substantial computational overhead. The overarching objective of this workshop is to explore topics on the efficiency of test-time reasoning methods, including:
 
