@@ -1,104 +1,124 @@
-// main.js
-document.addEventListener('DOMContentLoaded', function() {
-    // Load data first
-    loadContent().then(() => {
-        // Then initialize everything else
-        initializeWorkshop();
-        initializeNavigation();
-        initializeAnimations();
-        
-        // Finally, show the page
-        document.documentElement.classList.add('loaded');
-    });
-});
-
-async function loadContent() {
-    try {
-        await Promise.all([
-            populateSpeakers(),
-            populateOrganizers(),
-            populateSchedule()
-        ]);
-    } catch (error) {
-        console.error('Error loading content:', error);
-    }
-}
-
-function populateSpeakers() {
-    return new Promise((resolve) => {
-        const speakersContainer = document.querySelector('#speakers .row');
-        if (speakersContainer) {
-            speakersContainer.innerHTML = WORKSHOP_DATA.speakers
-                .map(speaker => WorkshopComponents.createSpeakerCard(speaker))
-                .join('');
-        }
-        resolve();
-    });
-}
-
-function populateOrganizers() {
-    return new Promise((resolve) => {
-        const organizersContainer = document.querySelector('#organizers .row');
-        if (organizersContainer) {
-            organizersContainer.innerHTML = WORKSHOP_DATA.organizers
-                .map(organizer => WorkshopComponents.createOrganizerCard(organizer))
-                .join('');
-        }
-        resolve();
-    });
-}
-
-function populateSchedule() {
-    return new Promise((resolve) => {
-        const scheduleContainer = document.querySelector('.schedule-timeline');
-        if (scheduleContainer) {
-            scheduleContainer.innerHTML = WORKSHOP_DATA.schedule
-                .map(item => WorkshopComponents.createScheduleItem(item))
-                .join('');
-        }
-        resolve();
-    });
-}
-
 function initializeWorkshop() {
-    setupFilters();
-    setupLazyLoading();
-}
+    // Check if already initialized
+    if (window.workshopInitialized) return;
+    window.workshopInitialized = true;
 
-function setupLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
+    // Function to populate invited speakers
+    function initializeInvitedSpeakers() {
+        try {
+            const invitedSpeakersContainer = document.getElementById('invited-speakers-container');
+            
+            if (!invitedSpeakersContainer || !WORKSHOP_DATA.invitedSpeakers) {
+                console.error('Missing invited speakers container or data');
+                return;
             }
-        });
-    });
 
-    images.forEach(img => imageObserver.observe(img));
-}
+            const speakersHTML = WORKSHOP_DATA.invitedSpeakers.map(speaker => `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card speaker-card invited-speaker-card">
+                        <div class="speaker-image-container">
+                            <img src="${speaker.image}" 
+                                class="speaker-image"
+                                alt="${speaker.name}"
+                                onerror="this.src='assets/images/placeholder.jpg'">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${speaker.name}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${speaker.affiliation}</h6>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
 
-function setupFilters() {
-    // Add any filtering functionality (e.g., by session type)
-    const filterButtons = document.querySelectorAll('.schedule-filter');
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filterType = this.dataset.filter;
-            filterScheduleItems(filterType);
-        });
-    });
-}
-
-function filterScheduleItems(type) {
-    const items = document.querySelectorAll('.schedule-item');
-    items.forEach(item => {
-        if (type === 'all' || item.classList.contains(`schedule-${type}`)) {
-            item.style.display = 'flex';
-        } else {
-            item.style.display = 'none';
+            // Add the "More Speakers Coming Soon" badge
+            const comingSoonHTML = `
+                <div class="col-12 coming-soon-container">
+                    <div class="coming-soon-badge">
+                        More Speakers Coming Soon
+                    </div>
+                </div>
+            `;
+            
+            invitedSpeakersContainer.innerHTML = speakersHTML +  comingSoonHTML;
+        } catch (error) {
+            console.error('Error populating invited speakers:', error);
         }
-    });
+    }
+
+    // Function to populate organizers
+    function initializeOrganizers() {
+        try {
+            const organizersContainer = document.getElementById('speakers-container');
+            
+            if (!organizersContainer || !WORKSHOP_DATA.organizers) {
+                console.error('Missing organizers container or data');
+                return;
+            }
+
+            const organizersHTML = WORKSHOP_DATA.organizers.map(organizer => `
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card speaker-card">
+                        <div class="speaker-image-container">
+                            <img src="${organizer.image}" 
+                                class="speaker-image"
+                                alt="${organizer.name}"
+                                onerror="this.src='assets/images/placeholder.jpg'">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${organizer.name}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${organizer.affiliation}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">${organizer.email}</h6>
+                            <p class="card-text"><small><strong>Bio:</strong> ${organizer.bio}</small></p>
+                            <a href="${organizer.website}" class="btn btn-outline-primary btn-sm" target="_blank">Website</a>
+                            <a href="${organizer.google_scholar}" class="btn btn-outline-primary btn-sm" target="_blank">Google Scholar</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            organizersContainer.innerHTML = organizersHTML;
+        } catch (error) {
+            console.error('Error populating organizers:', error);
+        }
+    }
+
+    // Function to populate program committee
+    function initializeProgramCommittee() {
+        try {
+            const committeeContainer = document.getElementById('committee-container');
+            
+            if (!committeeContainer || !WORKSHOP_DATA.programCommittee) {
+                console.error('Missing committee container or data');
+                return;
+            }
+
+            const committeeHTML = `
+                <ul class="list-unstyled committee-list">
+                    ${WORKSHOP_DATA.programCommittee.map(member => `
+                        <li class="committee-item">
+                            <strong>${member.name}</strong>
+                            <br>
+                            <span class="text-muted">${member.affiliation}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            
+            committeeContainer.innerHTML = committeeHTML;
+        } catch (error) {
+            console.error('Error populating program committee:', error);
+        }
+    }
+
+    // Initialize all sections
+    initializeInvitedSpeakers();
+    initializeOrganizers();
+    initializeProgramCommittee();
+}
+
+// Wait for DOM to be fully loaded
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', initializeWorkshop);
+} else {
+    initializeWorkshop();
 }

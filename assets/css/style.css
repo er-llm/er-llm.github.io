@@ -1,15 +1,14 @@
-/* Global Styles */
+/* Base styles */
 :root {
-    --primary-color: #003262;  /* NeurIPS blue */
+    --primary-color: #003262;
     --secondary-color: #f8f9fa;
-    --text-color: #333;
-    --light-bg: #f8f9fa;
 }
 
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
+    margin: 0;
+    padding: 0;
 }
 
 /* Navigation */
@@ -18,107 +17,212 @@ body {
     padding: 1rem 0;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: white;
-    padding: 0.5rem 1rem;
+.navbar-brand img {
+    height: 50px;
 }
 
 /* Hero Section */
 .hero-section {
-    background-color: var(--secondary-color);
-    padding: 4rem 0;
-    text-align: center;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: var(--primary-color);
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/sandiego_banner.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 50, 98, 0.7);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 /* Section Styling */
 .section {
-    padding: 3rem 0;
+    padding: 4rem 0;
+    background-color: #fff;
 }
 
 .section-title {
-    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Speaker Cards */
+#speakers-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Card and Image Styles */
+.speaker-card {
+    height: 100%;
+    border: none;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    background: white;
+}
+
+/* Image container to maintain aspect ratio */
+.speaker-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    overflow: hidden;
+}
+
+.speaker-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will cover the container while maintaining aspect ratio */
+    object-position: center; /* Center the image */
+}
+
+/* Different styles for invited speakers */
+.invited-speaker-card .speaker-image-container {
+    padding-top: 75%; /* 4:3 Aspect Ratio for invited speakers */
+}
+
+.coming-soon-container {
+    text-align: center;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+.coming-soon-badge {
+    background: #003262;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card body spacing */
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
 }
 
-/* Cards */
-.organizer-card {
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
 }
 
-.organizer-card:hover {
-    transform: translateY(-5px);
+/* Topics List */
+.topics-list {
+    list-style-type: none;
+    padding-left: 0;
 }
 
-/* Important Dates */
-.important-date {
-    padding: 15px;
-    background-color: var(--light-bg);
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border-left: 4px solid var(--primary-color);
+.topics-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.topics-list li:last-child {
+    border-bottom: none;
+}
+
+/* Program Committee */
+.committee-list {
+    columns: 4;
+    -webkit-columns: 4;
+    -moz-columns: 4;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.committee-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 992px) {
+    .committee-list {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .committee-list {
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 2rem 0;
+    .hero-section h1 {
+        font-size: 2.5rem;
     }
     
-    .section {
-        padding: 2rem 0;
+    .hero-section h2 {
+        font-size: 1.5rem;
     }
-}
 
-/* Speaker Cards */
-.speaker-card {
-    transition: transform 0.3s ease;
-}
-
-.speaker-card:hover {
-    transform: translateY(-5px);
-}
-
-.speaker-image {
-    height: 250px;
-    object-fit: cover;
-}
-
-/* Schedule Items */
-.schedule-item {
-    display: flex;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.schedule-time {
-    min-width: 150px;
-    font-weight: bold;
-}
-
-.schedule-keynote {
-    border-left: 4px solid #003262;
-}
-
-.schedule-talk {
-    border-left: 4px solid #FDB515;
-}
-
-.schedule-break {
-    border-left: 4px solid #3B7EA1;
-}
-
-/* Animations */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-}
-
-.animate-on-scroll.animated {
-    opacity: 1;
-    transform: translateY(0);
+    .navbar-brand img {
+        height: 40px;
+    }
 }
