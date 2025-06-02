@@ -1,3 +1,10 @@
+console.log('Main.js loaded');
+console.log('WORKSHOP_DATA:', WORKSHOP_DATA);
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeWorkshop();
+});
+
 function initializeWorkshop() {
     // Check if already initialized
     if (window.workshopInitialized) return;
@@ -114,11 +121,4 @@ function initializeWorkshop() {
     initializeInvitedSpeakers();
     initializeOrganizers();
     initializeProgramCommittee();
-}
-
-// Wait for DOM to be fully loaded
-if (document.readyState === 'loading') {
-    window.addEventListener('DOMContentLoaded', initializeWorkshop);
-} else {
-    initializeWorkshop();
 }
