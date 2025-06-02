@@ -117,8 +117,26 @@ function initializeWorkshop() {
         }
     }
 
+    // Function to handle scroll behavior
+    function initializeScrollBehavior() {
+        const workshopTitle = document.querySelector('.workshop-title-scroll');
+        const heroSection = document.querySelector('.hero-section');
+        
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            if (heroBottom <= 0) {
+                workshopTitle.classList.remove('d-none');
+                workshopTitle.classList.add('visible');
+            } else {
+                workshopTitle.classList.remove('visible');
+                workshopTitle.classList.add('d-none');
+            }
+        });
+    }
+
     // Initialize all sections
     initializeInvitedSpeakers();
     initializeOrganizers();
     initializeProgramCommittee();
+    initializeScrollBehavior();
 }

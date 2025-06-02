@@ -145,8 +145,8 @@ body {
 }
 
 .card-title {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
     color: var(--primary-color);
 }
 
@@ -157,6 +157,13 @@ body {
 }
 
 /* Topics List */
+.topics-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
 .topics-list {
     list-style-type: none;
     padding-left: 0;
@@ -225,4 +232,18 @@ body {
     .navbar-brand img {
         height: 40px;
     }
+}
+
+/* Scroll */
+.workshop-title-scroll {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-right: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.workshop-title-scroll.visible {
+    opacity: 1;
 }
