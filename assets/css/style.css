@@ -81,29 +81,79 @@ body {
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 3rem;
+    font-size: 2.5rem;
 }
 
-/* Speaker Cards */
-#speakers-container {
-    display: flex;
-    flex-wrap: wrap;
+/* About Section */
+#about .card-body {
+    text-align: left;
+    padding: 0;
 }
 
-/* Card and Image Styles */
+#about .card-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    text-align: left;
+}
+
+.topics-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-align: left;
+}
+
+.topics-list {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.topics-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.topics-list li:last-child {
+    border-bottom: none;
+}
+
+/* Speakers and Organizers Sections */
+#invited-speakers-container, #speakers-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
 .speaker-card {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: transparent;
     border: none;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-    background: white;
+    margin-bottom: 2rem;
 }
 
-/* Image container to maintain aspect ratio */
 .speaker-image-container {
-    position: relative;
-    width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
     overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+#speakers-container .speaker-image-container {
+    width: 250px;
+    height: 250px;
 }
 
 .speaker-image {
@@ -112,19 +162,33 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This will cover the container while maintaining aspect ratio */
-    object-position: center; /* Center the image */
+    object-fit: cover;
+    object-position: center;
 }
 
-/* Different styles for invited speakers */
-.invited-speaker-card .speaker-image-container {
-    padding-top: 75%; /* 4:3 Aspect Ratio for invited speakers */
+.speaker-card .card-body {
+    padding: 1rem;
+    text-align: center;
 }
 
+.speaker-card .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.speaker-card .card-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Coming Soon Badge */
 .coming-soon-container {
     text-align: center;
     padding: 2rem;
     margin: 1rem 0;
+    grid-column: 1 / -1;
 }
 
 .coming-soon-badge {
@@ -137,45 +201,6 @@ body {
     align-items: center;
     gap: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Card body spacing */
-.card-body {
-    padding: 1.25rem;
-}
-
-.card-title {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-}
-
-.card-subtitle {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.5rem;
-}
-
-/* Topics List */
-.topics-title {
-    font-size: 1.8rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.topics-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.topics-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-.topics-list li:last-child {
-    border-bottom: none;
 }
 
 /* Program Committee */
@@ -195,21 +220,25 @@ body {
     padding: 0.5rem;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 992px) {
-    .committee-list {
-        columns: 2;
-        -webkit-columns: 2;
-        -moz-columns: 2;
-    }
+/* Links */
+.organizer-name-link {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-@media (max-width: 768px) {
-    .committee-list {
-        columns: 1;
-        -webkit-columns: 1;
-        -moz-columns: 1;
-    }
+.organizer-name-link:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 /* Footer */
@@ -217,6 +246,52 @@ body {
     background-color: var(--primary-color);
     color: white;
     padding: 2rem 0;
+}
+
+/* Scroll */
+.workshop-title-scroll {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-right: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.workshop-title-scroll.visible {
+    opacity: 1;
+}
+
+/* Responsive Design for Speakers/Organizers */
+@media (max-width: 1400px) {
+    #invited-speakers-container, #speakers-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1100px;
+    }
+}
+
+@media (max-width: 992px) {
+    #invited-speakers-container, #speakers-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 576px) {
+    #invited-speakers-container, #speakers-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    
+    .speaker-image-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    #speakers-container .speaker-image-container {
+        width: 200px;
+        height: 200px;
+    }
 }
 
 /* Responsive Design */
@@ -232,18 +307,4 @@ body {
     .navbar-brand img {
         height: 40px;
     }
-}
-
-/* Scroll */
-.workshop-title-scroll {
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-right: auto;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.workshop-title-scroll.visible {
-    opacity: 1;
 }

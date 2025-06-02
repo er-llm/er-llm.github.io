@@ -62,6 +62,26 @@ function initializeWorkshop() {
                 return;
             }
 
+            // const organizersHTML = WORKSHOP_DATA.organizers.map(organizer => `
+            //     <div class="col-lg-3 col-md-6 mb-4">
+            //         <div class="card speaker-card">
+            //             <div class="speaker-image-container">
+            //                 <img src="${organizer.image}" 
+            //                     class="speaker-image"
+            //                     alt="${organizer.name}"
+            //                     onerror="this.src='assets/images/placeholder.jpg'">
+            //             </div>
+            //             <div class="card-body">
+            //                 <h5 class="card-title">${organizer.name}</h5>
+            //                 <h6 class="card-subtitle mb-2 text-muted">${organizer.affiliation}</h6>
+            //                 <h6 class="card-subtitle mb-2 text-muted">${organizer.email}</h6>
+            //                 <p class="card-text"><small><strong>Bio:</strong> ${organizer.bio}</small></p>
+            //                 <a href="${organizer.website}" class="btn btn-outline-primary btn-sm" target="_blank">Website</a>
+            //                 <a href="${organizer.google_scholar}" class="btn btn-outline-primary btn-sm" target="_blank">Google Scholar</a>
+            //             </div>
+            //         </div>
+            //     </div>
+            // `).join('');
             const organizersHTML = WORKSHOP_DATA.organizers.map(organizer => `
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card speaker-card">
@@ -72,12 +92,16 @@ function initializeWorkshop() {
                                 onerror="this.src='assets/images/placeholder.jpg'">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">${organizer.name}</h5>
+                            <h5 class="card-title">
+                                <a href="${organizer.website}" target="_blank" class="organizer-name-link">
+                                    ${organizer.name}
+                                </a>
+                            </h5>
                             <h6 class="card-subtitle mb-2 text-muted">${organizer.affiliation}</h6>
                             <h6 class="card-subtitle mb-2 text-muted">${organizer.email}</h6>
-                            <p class="card-text"><small><strong>Bio:</strong> ${organizer.bio}</small></p>
-                            <a href="${organizer.website}" class="btn btn-outline-primary btn-sm" target="_blank">Website</a>
-                            <a href="${organizer.google_scholar}" class="btn btn-outline-primary btn-sm" target="_blank">Google Scholar</a>
+                            <div class="mt-2">
+                                <a href="${organizer.google_scholar}" class="btn btn-outline-primary btn-sm" target="_blank">Google Scholar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
