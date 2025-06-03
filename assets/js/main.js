@@ -38,15 +38,15 @@ function initializeWorkshop() {
             `).join('');
 
             // Add the "More Speakers Coming Soon" badge
-         //   const comingSoonHTML = `
-         //       <div class="col-12 coming-soon-container">
-         //           <div class="coming-soon-badge">
-         //               More Speakers Coming Soon
-         //           </div>
-         //       </div>
-         //   `;
+            const comingSoonHTML = `
+                <div class="col-12 coming-soon-container">
+                    <div class="coming-soon-badge">
+                        More Speakers Coming Soon
+                    </div>
+                </div>
+            `;
             
-            invitedSpeakersContainer.innerHTML = speakersHTML;// +  comingSoonHTML;
+            invitedSpeakersContainer.innerHTML = speakersHTML +  comingSoonHTML;
         } catch (error) {
             console.error('Error populating invited speakers:', error);
         }
