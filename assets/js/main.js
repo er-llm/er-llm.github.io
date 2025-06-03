@@ -46,7 +46,7 @@ function initializeWorkshop() {
          //       </div>
          //   `;
             
-            invitedSpeakersContainer.innerHTML = speakersHTML +  comingSoonHTML;
+            invitedSpeakersContainer.innerHTML = speakersHTML;// +  comingSoonHTML;
         } catch (error) {
             console.error('Error populating invited speakers:', error);
         }
