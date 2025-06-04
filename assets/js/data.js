@@ -152,25 +152,29 @@ const WORKSHOP_DATA = {
     invitedSpeakers: [
         {
             name: "Danqi Chen",
-            affiliation: "Associate Professor of Computer Science at Princeton",
+            title: "Associate Professor of Computer Science",
+            affiliation: "Princeton",
             image: "assets/images/speakers/danqi.webp"
 
         },
         {
             name: "Azalia Mirhoseini",
-            affiliation: "Assistant Professor of Computer Science at Stanford",
+            title: "Assistant Professor of Computer Science",
+            affiliation: "Stanford",
             image: "assets/images/speakers/azalia.webp"
 
         },
         {
             name: "Jianfeng Gao",
-            affiliation: "Distinguished Scientist and Vice President at Microsoft",
+            title: "Distinguished Scientist and Vice President",
+            affiliation: " Microsoft",
             image: "assets/images/speakers/jianfeng.jpg"
 
         },
         {
             name: "Yuandong Tiang",
-            affiliation: "Director of Research Science at Meta GenAI",
+            title: "Director of Research Science",
+            affiliation: "Meta GenAI",
             image: "assets/images/speakers/yuandong.webp"
 
         },

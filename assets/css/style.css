@@ -24,7 +24,7 @@ body {
 /* Hero Section */
 .hero-section {
     position: relative;
-    min-height: 80vh;
+    min-height:50vh;
     display: flex;
     align-items: center;
     color: white;
@@ -132,6 +132,8 @@ body {
 }
 
 .speaker-card {
+    width: 100%; /* Changed to use full width of grid cell */
+    max-width: 350px; /* Maximum width for the card */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,6 +169,7 @@ body {
 }
 
 .speaker-card .card-body {
+    width: 350px;
     padding: 1rem;
     text-align: center;
 }
@@ -266,31 +269,30 @@ body {
 @media (max-width: 1400px) {
     #invited-speakers-container, #speakers-container {
         grid-template-columns: repeat(3, 1fr);
-        max-width: 1100px;
+    }
+    
+    .speaker-card {
+        width: 300px;
     }
 }
 
 @media (max-width: 992px) {
     #invited-speakers-container, #speakers-container {
         grid-template-columns: repeat(2, 1fr);
-        max-width: 800px;
+    }
+    
+    .speaker-card {
+        width: 320px;
     }
 }
 
 @media (max-width: 576px) {
     #invited-speakers-container, #speakers-container {
         grid-template-columns: 1fr;
-        max-width: 400px;
     }
     
-    .speaker-image-container {
-        width: 220px;
-        height: 220px;
-    }
-
-    #speakers-container .speaker-image-container {
-        width: 200px;
-        height: 200px;
+    .speaker-card {
+        width: 280px;
     }
 }
 

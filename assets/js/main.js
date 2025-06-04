@@ -46,7 +46,7 @@ function initializeWorkshop() {
                 </div>
             `;
             
-            invitedSpeakersContainer.innerHTML = speakersHTML +  comingSoonHTML;
+            invitedSpeakersContainer.innerHTML = speakersHTML;
         } catch (error) {
             console.error('Error populating invited speakers:', error);
         }
@@ -98,10 +98,6 @@ function initializeWorkshop() {
                                 </a>
                             </h5>
                             <h6 class="card-subtitle mb-2 text-muted">${organizer.affiliation}</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">${organizer.email}</h6>
-                            <div class="mt-2">
-                                <a href="${organizer.google_scholar}" class="btn btn-outline-primary btn-sm" target="_blank">Google Scholar</a>
-                            </div>
                         </div>
                     </div>
                 </div>
