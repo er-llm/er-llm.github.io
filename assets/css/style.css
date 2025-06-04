@@ -21,6 +21,11 @@ body {
     height: 50px;
 }
 
+/* Add scroll padding to the root element to account for fixed navbar */
+html {
+    scroll-padding-top: 80px; /* Adjust this value based on your navbar height */
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
