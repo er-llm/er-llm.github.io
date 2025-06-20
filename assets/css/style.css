@@ -261,6 +261,7 @@ html {
 }
 
 /* Program Committee */
+
 .committee-list {
     columns: 6;
     -webkit-columns: 6;
@@ -273,6 +274,9 @@ html {
 .committee-item {
     break-inside: avoid;
     page-break-inside: avoid;
+    margin-bottom: 1.5rem; /* Consistent vertical spacing */
+    padding: 0.5rem;
+    min-height: 2.5em; /* Ensure minimum height for each item */
     margin-bottom: 1rem;
     padding: 0.5rem;
 }
