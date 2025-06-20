@@ -111,18 +111,22 @@ html {
 }
 
 .topics-list {
-    list-style-type: none;
-    padding-left: 0;
-    text-align: left;
+    counter-reset: topic-counter;  /* Creates a counting context */
+    list-style: none;
 }
 
 .topics-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 2em;  /* Make space for the number */
 }
 
-.topics-list li:last-child {
-    border-bottom: none;
+.topics-list li::before {
+    counter-increment: topic-counter;  /* Increment the counter */
+    content: counter(topic-counter) ". ";  /* Display the counter */
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);  /* Use the primary color for numbers */
+    font-weight: bold;
 }
 
 /* Speakers and Organizers Sections */
@@ -189,6 +193,51 @@ html {
     font-size: 0.9rem;
     color: #666;
     margin-bottom: 0.5rem;
+}
+
+/* CFP Section Styles */
+.cfp-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.cfp-link:hover {
+    text-decoration: underline;
+}
+
+.important-dates {
+    margin: 2rem 0;
+}
+
+.important-dates h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.dates-list {
+    list-style: none;
+    padding: 0;
+}
+
+.dates-list li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.dates-list li:last-child {
+    border-bottom: none;
+}
+
+.submission-portal {
+    margin-top: 2rem;
+}
+
+.submission-portal a {
+    color: var(--primary-color);
+    word-break: break-all;
 }
 
 /* Coming Soon Badge */
@@ -314,4 +363,105 @@ html {
     .navbar-brand img {
         height: 40px;
     }
+}
+
+/* Add these specific rules for fine-tuning if needed */
+#about {
+    padding-bottom: 1rem;  /* Reduce bottom padding of about section */
+}
+
+#topics {
+    padding-top: 1rem;  /* Reduce top padding of topics section */
+}
+
+#invited-speakers {
+    padding-top: 1rem;  /* Reduce top padding of speaker section */
+}
+
+#cfp {
+    padding-top: 1rem;  /* Reduce top padding of cfp section */
+}
+
+#organizers {
+    padding-top: 1rem;  /* Reduce top padding of organizer section */
+}
+
+#program-committee {
+    padding-top: 1rem;  /* Reduce top padding of program committee section */
+}
+
+/* CFP Page Specific Styles */
+.cfp-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cfp-content h3 {
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cfp-content h4 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cfp-content .lead {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.submission-guidelines {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.submission-guidelines ul {
+    padding-left: 1.5rem;
+}
+
+.submission-guidelines li {
+    margin-bottom: 0.5rem;
+}
+
+/* Submission Policy Styles */
+.submission-policy {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.submission-policy h4 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.submission-policy p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.submission-policy ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.submission-policy li {
+    margin-bottom: 0.75rem;
+}
+
+.submission-policy a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.submission-policy a:hover {
+    text-decoration: underline;
 }
