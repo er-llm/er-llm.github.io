@@ -262,9 +262,9 @@ html {
 
 /* Program Committee */
 .committee-list {
-    columns: 4;
-    -webkit-columns: 4;
-    -moz-columns: 4;
+    columns: 6;
+    -webkit-columns: 6;
+    -moz-columns: 6;
     gap: 2rem;
     margin: 0;
     padding: 0;
@@ -430,7 +430,6 @@ html {
 
 /* Submission Policy Styles */
 .submission-policy {
-    background-color: #f8f9fa;
     padding: 2rem;
     border-radius: 8px;
     margin: 2rem 0;
